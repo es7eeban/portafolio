@@ -10,6 +10,7 @@ import {
   Sparkles,
   ExternalLink,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { LinkedinIcon } from './icons/BrandIcons';
 import { profileData } from '../data/portfolioData';
 
@@ -46,11 +47,20 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contacto" className="py-20 bg-slate-900/60 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contacto" className="py-24 bg-slate-900/60 relative overflow-hidden">
+      {/* Background ambient decorative glow */}
+      <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-400 uppercase tracking-wider">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Contacto Profesional</span>
@@ -61,15 +71,21 @@ export const Contact: React.FC = () => {
           <p className="text-slate-400 text-base sm:text-lg">
             ¿Buscas un Ingeniero de Software para desarrollo backend, frontend, arquitectura o consultoría técnica? Contáctame directamente.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Direct Contact Cards (Left Column) */}
-          <div className="lg:col-span-5 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 space-y-4"
+          >
             
             {/* Email Card */}
-            <div className="p-6 rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-slate-700 transition-all">
+            <div className="p-6 rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-cyan-500/30 transition-all">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
@@ -90,7 +106,7 @@ export const Contact: React.FC = () => {
                   onClick={handleCopyEmail}
                   type="button"
                   title="Copiar correo"
-                  className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-cyan-400 transition-colors border border-slate-800"
+                  className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-cyan-400 transition-colors border border-slate-800 cursor-pointer"
                 >
                   {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 </button>
@@ -103,7 +119,7 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Phone & WhatsApp Card */}
-            <div className="p-6 rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-slate-700 transition-all">
+            <div className="p-6 rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-emerald-500/30 transition-all">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
@@ -126,7 +142,7 @@ export const Contact: React.FC = () => {
                   onClick={handleCopyPhone}
                   type="button"
                   title="Copiar teléfono"
-                  className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-emerald-400 transition-colors border border-slate-800"
+                  className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-emerald-400 transition-colors border border-slate-800 cursor-pointer"
                 >
                   {copiedPhone ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 </button>
@@ -139,7 +155,7 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* LinkedIn Card */}
-            <div className="p-6 rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-slate-700 transition-all">
+            <div className="p-6 rounded-2xl bg-slate-950/90 border border-slate-800 hover:border-blue-500/30 transition-all">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
@@ -179,10 +195,16 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Interactive Contact Form (Right Column) */}
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7"
+          >
             <div className="p-8 sm:p-10 rounded-2xl bg-slate-950 border border-slate-800 shadow-xl">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                 Envíame un Mensaje
@@ -259,17 +281,19 @@ export const Contact: React.FC = () => {
                     />
                   </div>
 
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full py-3 px-6 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+                    className="w-full py-3 px-6 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 cursor-pointer"
                   >
                     <span>Enviar Mensaje</span>
                     <Send className="w-4 h-4" />
-                  </button>
+                  </motion.button>
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
 
         </div>
 

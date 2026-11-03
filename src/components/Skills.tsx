@@ -8,6 +8,7 @@ import {
   Cpu,
   Zap,
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { skillCategoriesData } from '../data/portfolioData';
 
 export const Skills: React.FC = () => {
@@ -42,11 +43,20 @@ export const Skills: React.FC = () => {
       : skillCategoriesData.filter((c) => c.title.toLowerCase().includes(activeCategory.toLowerCase()));
 
   return (
-    <section id="habilidades" className="py-20 bg-slate-950 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="habilidades" className="py-24 bg-slate-950 relative overflow-hidden">
+      {/* Background ambient decorative glow */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none translate-x-1/2" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-400 uppercase tracking-wider">
             <Cpu className="w-3.5 h-3.5" />
             <span>Stack Tecnológico</span>
@@ -60,34 +70,44 @@ export const Skills: React.FC = () => {
 
           {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => setActiveCategory('all')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer ${
                 activeCategory === 'all'
                   ? 'bg-cyan-500 text-slate-950 font-semibold shadow-md shadow-cyan-500/20'
                   : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
               }`}
             >
               Todas las Áreas
-            </button>
+            </motion.button>
             {skillCategoriesData.map((cat) => (
-              <button
+              <motion.button
                 key={cat.title}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setActiveCategory(cat.title)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer ${
                   activeCategory === cat.title
                     ? 'bg-cyan-500 text-slate-950 font-semibold shadow-md shadow-cyan-500/20'
                     : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
                 }`}
               >
                 {cat.title}
-              </button>
+              </motion.button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Featured Core Stack Banner */}
-        <div className="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-cyan-500/30 shadow-2xl shadow-cyan-950/20">
+        {/* Featured Core Stack Banner with subtle hover lift */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+          className="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-cyan-500/30 shadow-2xl shadow-cyan-950/20"
+        >
           <div className="flex items-center gap-2 mb-6">
             <Zap className="w-5 h-5 text-cyan-400 animate-pulse" />
             <h3 className="text-lg sm:text-xl font-bold text-white">
@@ -97,67 +117,79 @@ export const Skills: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {coreFocusSkills.map((item) => (
-              <div
+              <motion.div
                 key={item.name}
-                className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-900 transition-all group"
+                whileHover={{ scale: 1.04, y: -4, borderColor: 'rgba(6,182,212,0.6)' }}
+                transition={{ duration: 0.2 }}
+                className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 hover:bg-slate-900/90 transition-colors group cursor-default"
               >
-                <div className="text-2xl mb-2">{item.icon}</div>
+                <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">{item.icon}</div>
                 <div className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
                   {item.name}
                 </div>
                 <div className="text-xs text-slate-400 mt-1 leading-snug">
                   {item.desc}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Full Skills Category Grid */}
+        {/* Full Skills Category Grid with Layout Animation */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {filteredCategories.map((category) => (
-            <div
-              key={category.title}
-              className="p-6 sm:p-8 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-slate-700 transition-all"
-            >
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-800">
-                <div className="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700">
-                  {getCategoryIcon(category.iconName)}
-                </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white">
-                    {category.title}
-                  </h3>
-                  <span className="text-xs text-slate-500">
-                    {category.skills.length} competencias listadas
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-2.5">
-                {category.skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-all ${
-                      skill.isPrimary
-                        ? 'bg-slate-800 text-cyan-300 border-cyan-500/40 shadow-sm'
-                        : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700'
-                    }`}
-                  >
-                    {skill.isPrimary && (
-                      <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                    )}
-                    <span>{skill.name}</span>
-                    {skill.level && (
-                      <span className="text-[10px] text-slate-500 font-mono">
-                        ({skill.level})
-                      </span>
-                    )}
+          <AnimatePresence mode="popLayout">
+            {filteredCategories.map((category) => (
+              <motion.div
+                key={category.title}
+                layout
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.94 }}
+                transition={{ duration: 0.4 }}
+                whileHover={{ y: -3, borderColor: 'rgba(51,65,85,1)' }}
+                className="p-6 sm:p-8 rounded-2xl bg-slate-900/40 border border-slate-800 transition-colors"
+              >
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-800">
+                  <div className="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                    {getCategoryIcon(category.iconName)}
                   </div>
-                ))}
-              </div>
-            </div>
-          ))}
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white">
+                      {category.title}
+                    </h3>
+                    <span className="text-xs text-slate-500">
+                      {category.skills.length} competencias listadas
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  {category.skills.map((skill) => (
+                    <motion.div
+                      key={skill.name}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.15 }}
+                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-all cursor-default ${
+                        skill.isPrimary
+                          ? 'bg-slate-800 text-cyan-300 border-cyan-500/40 shadow-sm'
+                          : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700'
+                      }`}
+                    >
+                      {skill.isPrimary && (
+                        <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                      )}
+                      <span>{skill.name}</span>
+                      {skill.level && (
+                        <span className="text-[10px] text-slate-500 font-mono">
+                          ({skill.level})
+                        </span>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
       </div>

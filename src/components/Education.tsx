@@ -1,14 +1,21 @@
 import React from 'react';
 import { GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { educationData } from '../data/portfolioData';
 
 export const Education: React.FC = () => {
   return (
-    <section id="educacion" className="py-20 bg-slate-950 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="educacion" className="py-24 bg-slate-950 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-semibold text-cyan-400 uppercase tracking-wider">
             <GraduationCap className="w-3.5 h-3.5" />
             <span>Formación Académica</span>
@@ -19,11 +26,17 @@ export const Education: React.FC = () => {
           <p className="text-slate-400 text-base sm:text-lg">
             Sólida preparación en ciencias de la computación, arquitectura de software, modelamiento de datos y optimización de sistemas.
           </p>
-        </div>
+        </motion.div>
 
         {/* Education Card */}
-        <div className="max-w-4xl mx-auto">
-          <div className="p-8 sm:p-10 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-slate-700 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="p-8 sm:p-10 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-cyan-500/30 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
             <div className="flex items-start gap-5">
               <div className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 shrink-0">
                 <GraduationCap className="w-8 h-8" />
@@ -56,7 +69,7 @@ export const Education: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>
