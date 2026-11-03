@@ -10,7 +10,7 @@ export const profileData: ProfileData = {
   email: 'earojasr96@gmail.com',
   linkedin: 'linkedin.com/in/earojasr',
   linkedinUrl: 'https://linkedin.com/in/earojasr',
-  githubUrl: 'https://github.com/earojasr',
+  githubUrl: 'https://github.com/es7eeban',
   summary:
     'Ingeniero Civil en Computación con experiencia en desarrollo de software empresarial y soluciones Full Stack. Especializado en backend robusto con Java y arquitectura de datos con Oracle PL/SQL, además de desarrollo frontend en Angular, React y TypeScript. Con sólida base en aseguramiento de calidad técnica (QA), diagnóstico de incidencias complejas y optimización de rendimiento. Enfocado en construir sistemas escalables, mantenibles y alineados a las necesidades críticas del negocio.',
   stats: [
@@ -128,7 +128,7 @@ export const projectsData: ProjectItem[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.',
     technologies: ['Java', 'Spring Boot', 'React', 'PostgreSQL', 'Docker'],
     liveUrl: 'https://example.com/demo-proyecto-1',
-    githubUrl: 'https://github.com/earojasr/proyecto-1',
+    githubUrl: 'https://github.com/es7eeban/proyecto-1',
     category: 'Full Stack',
   },
   {
@@ -139,7 +139,7 @@ export const projectsData: ProjectItem[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra.',
     technologies: ['Angular', 'Node.js', 'Express', 'MongoDB', 'Docker'],
     liveUrl: 'https://example.com/demo-proyecto-2',
-    githubUrl: 'https://github.com/earojasr/proyecto-2',
+    githubUrl: 'https://github.com/es7eeban/proyecto-2',
     category: 'Backend & Cloud',
   },
   {
@@ -150,7 +150,7 @@ export const projectsData: ProjectItem[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor.',
     technologies: ['TypeScript', 'Oracle PL/SQL', 'REST APIs', 'Tailwind CSS'],
     liveUrl: 'https://example.com/demo-proyecto-3',
-    githubUrl: 'https://github.com/earojasr/proyecto-3',
+    githubUrl: 'https://github.com/es7eeban/proyecto-3',
     category: 'Arquitectura & Datos',
   },
 ];
